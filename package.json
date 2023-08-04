@@ -1,0 +1,31 @@
+{
+  "name": "simplecache",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
+  "keywords": [
+    "redis",
+    "caching"
+  ],
+  "author": "Davi Patricio <davipatricio@protonmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.4.6",
+    "eslint": "^8.46.0",
+    "eslint-config-neon": "^0.1.47",
+    "eslint-plugin-prettier": "^5.0.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6"
+  }
+}
