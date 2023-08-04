@@ -1,13 +1,24 @@
+import type { Client } from '../client/Client.js';
+
 export class BaseStore {
+  private client!: Client;
+
   /**
-   * This method is used to set a value in the cache.
-   *
-   * @param key The key to set the value under.
-   * @param value The value to set.
-   * @param expiresIn The time in milliseconds for the value to expire. Defaults to {@link BaseClientOptions.defaultCacheTime}.
+   * This method is used to clear the entire cache.
    */
-  public async set<T>(key: string, value: T, expiresIn?: number) {
-    throw new Error('Method not implemented.');
+  public async clear() {
+    if (!this.client) throw new Error('Method not implemented.');
+    await this.client.store.clear();
+  }
+
+  /**
+   * This method is used to delete a value from the cache.
+   *
+   * @param key The key to delete the value for.
+   */
+  public async delete(key: string) {
+    if (!this.client) throw new Error('Method not implemented.');
+    await this.client.store.delete(key);
   }
 
   /**
@@ -17,22 +28,26 @@ export class BaseStore {
    * @returns The value if it exists, otherwise undefined.
    */
   public async get<T>(key: string): Promise<T | undefined> {
-    throw new Error('Method not implemented.');
+    if (!this.client) throw new Error('Method not implemented.');
+    return this.client.store.get<T>(key);
   }
 
   /**
-   * This method is used to delete a value from the cache.
+   * This method is used to set a value in the cache.
    *
-   * @param key The key to delete the value for.
+   * @param key The key to set the value under.
+   * @param value The value to set.
+   * @param expiresIn The time in milliseconds for the value to expire. Defaults to {@link BaseClientOptions.defaultCacheTime}.
    */
-  public async delete(key: string) {
-    throw new Error('Method not implemented.');
+  public async set<T>(key: string, value: T, expiresIn?: number) {
+    if (!this.client) throw new Error('Method not implemented.');
+    await this.client.store.set<T>(key, value, expiresIn);
   }
 
   /**
-   * This method is used to clear the entire cache.
+   * @private
    */
-  public async clear() {
-    throw new Error('Method not implemented.');
+  protected setClient(client: Client) {
+    this.client = client;
   }
 }
