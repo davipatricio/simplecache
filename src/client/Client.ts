@@ -1,6 +1,7 @@
 import { BaseStore } from '../store/BaseStore.js';
 import { DiskStore } from '../store/DiskStore.js';
 import { MemoryStore } from '../store/MemoryStore.js';
+import { RedisStore } from '../store/RedisStore.js';
 import type { ClientOptions } from './ClientOptions.js';
 
 const defaultOptions: ClientOptions = {
@@ -25,7 +26,11 @@ export class Client extends BaseStore {
         this.store = new MemoryStore(this.options.defaultCacheTime);
         break;
       case 'redis':
-        throw new Error('Redis cache strategy is not yet implemented.');
+        this.store = new RedisStore(
+          this.options.redisUrl,
+          this.options.defaultCacheTime,
+        );
+        break;
       case 'disk':
         this.store = new DiskStore(
           this.options.cacheFile ?? './.cache/simplecache.json',
