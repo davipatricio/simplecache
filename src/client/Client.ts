@@ -38,8 +38,4 @@ export class Client extends BaseStore {
         );
     }
   }
-
-  public connect() {
-    return true;
-  }
 }
