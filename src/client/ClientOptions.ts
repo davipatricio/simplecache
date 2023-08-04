@@ -30,11 +30,11 @@ interface RedisClientOptions extends BaseClientOptions {
 
 interface DiskClientOptions extends BaseClientOptions {
   /**
-   * Path to the cache directory
+   * Path to the cache file
    *
-   * @default .cache/simplecache
+   * @default .cache/simplecache.json
    */
-  cacheDir?: string;
+  cacheFile?: string;
   /**
    * Which cache strategy to use
    */
