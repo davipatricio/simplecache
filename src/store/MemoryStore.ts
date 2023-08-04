@@ -16,7 +16,7 @@ export class MemoryStore extends BaseStore {
     this.data[key] = value;
 
     if (
-      expiresIn ||
+      !expiresIn ||
       this.defaultCacheTime === undefined ||
       this.defaultCacheTime === 0
     )
