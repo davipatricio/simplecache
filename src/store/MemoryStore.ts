@@ -15,12 +15,7 @@ export class MemoryStore extends BaseStore {
   public async set<T>(key: string, value: T, expiresIn?: number) {
     this.data[key] = value;
 
-    if (
-      !expiresIn ||
-      this.defaultCacheTime === undefined ||
-      this.defaultCacheTime === 0
-    )
-      return;
+    if (!expiresIn || !this.defaultCacheTime) return;
 
     setTimeout(() => {
       this.data[key] = undefined;
