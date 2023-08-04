@@ -1,1 +1,1 @@
-export { Client } from './clients/Client.js';
+export { Client } from './client/Client.js';
