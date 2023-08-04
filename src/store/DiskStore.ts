@@ -1,5 +1,5 @@
 import { mkdirSync } from 'node:fs';
-import { writeFile, readFile, mkdir } from 'node:fs/promises';
+import { writeFile, readFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { setTimeout } from 'node:timers';
 import { BaseStore } from './BaseStore.js';
