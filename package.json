@@ -2,6 +2,7 @@
   "name": "simplecache",
   "version": "0.0.1",
   "description": "",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
     "build": "tsup",
