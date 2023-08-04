@@ -4,8 +4,10 @@
   "description": "",
   "type": "module",
   "scripts": {
+    "build": "tsup",
     "dev": "tsup --watch",
-    "build": "tsup"
+    "lint": "eslint . --cache --ext .ts",
+    "lint:fix": "pnpm lint --fix"
   },
   "exports": {
     ".": {
